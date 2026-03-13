@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convite de Casamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+--gold:#c8a97e;
+--rose:#f5e3e6;
+--dark:#2b2b2b;
+--soft:#faf7f5;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Montserrat,sans-serif;
+background:var(--soft);
+color:var(--dark);
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+padding:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+z-index:100;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:600;
+font-size:14px;
+transition:0.3s;
+}
+
+nav a:hover{color:var(--gold)}
+
+header{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+position:relative;
+}
+
+header::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.45);
+}
+
+.hero{
+position:relative;
+z-index:2;
+padding:20px;
+max-width:700px;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:4rem;
+margin:0;
+letter-spacing:3px;
+}
+
+.hero p{
+font-size:1.3rem;
+margin:10px 0;
+}
+
+.countdown{
+font-size:1.8rem;
+margin-top:20px;
+font-weight:600;
+}
+
+.hero button{
+margin-top:25px;
+background:var(--gold);
+border:none;
+color:white;
+padding:14px 28px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+font-size:15px;
+}
+
+section{
+padding:110px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.title{
+font-family:'Playfair Display',serif;
+font-size:2.6rem;
+text-align:center;
+margin-bottom:60px;
+}
+
+/* TIMELINE */
+.timeline{
+position:relative;
+max-width:750px;
+margin:auto;
+}
+
+.timeline::after{
+content:'';
+position:absolute;
+width:3px;
+background:var(--gold);
+top:0;
+bottom:0;
+left:50%;
+}
+
+.moment{
+padding:20px 30px;
+position:relative;
+width:50%;
+}
+
+.moment:nth-child(odd){left:0;text-align:right}
+.moment:nth-child(even){left:50%}
+
+.moment::before{
+content:'';
+position:absolute;
+top:25px;
+width:14px;
+height:14px;
+background:var(--gold);
+border-radius:50%;
+}
+
+.moment:nth-child(odd)::before{right:-8px}
+.moment:nth-child(even)::before{left:-8px}
+
+/* EVENT */
+.event-box{
+background:white;
+padding:35px;
+border-radius:14px;
+box-shadow:0 12px 30px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+/* RSVP */
+form{
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:420px;
+margin:auto;
+}
+
+input,textarea{
+padding:11px;
+border-radius:6px;
+border:1px solid #ccc;
+font-family:Montserrat;
+}
+
+button{
+background:var(--gold);
+border:none;
+padding:12px 20px;
+color:white;
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* MESSAGES */
+.messages{
+margin-top:30px;
+max-width:600px;
+margin-inline:auto;
+}
+
+.message{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+box-shadow:0 5px 12px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer{
+background:#eee;
+text-align:center;
+padding:40px 20px;
+margin-top:60px;
+font-style:italic;
+}
+
+/* FLOAT BUTTONS */
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+padding:12px 16px;
+border-radius:30px;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+cursor:pointer;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* PETALS */
+.petal{
+position:fixed;
+top:-20px;
+width:10px;
+height:10px;
+background:#ffc0cb;
+border-radius:50%;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* MOBILE */
+@media(max-width:800px){
+.timeline::after{left:10px}
+.moment{width:100%;padding-left:40px;text-align:left}
+.moment:nth-child(even){left:0}
+.moment::before{left:2px}
+.hero h1{font-size:2.6rem}
+}
+
+</style></head><body><nav>
+<a href="#home">Início</a>
+<a href="#historia">História</a>
+<a href="#evento">Evento</a>
+<a href="#galeria">Fotos</a>
+<a href="#rsvp">RSVP</a>
+<a href="#recados">Recados</a>
+</nav><header id="home">
+<div class="hero">
+<h1>Ana & João</h1>
+<p>Convidam você para celebrar este momento especial</p>
+<p><strong>20 de Dezembro de 2026</strong></p>
+<div class="countdown" id="countdown"></div>
+<button onclick="scrollToRSVP()">Confirmar Presença</button>
+</div>
+</header><section id="historia">
+<h2 class="title">Nossa História</h2>
+<div class="timeline">
+<div class="moment"><h3>Primeiro encontro</h3><p>Um encontro inesperado que mudou nossas vidas.</p></div>
+<div class="moment"><h3>Primeira viagem</h3><p>Descobrimos o mundo juntos.</p></div>
+<div class="moment"><h3>Pedido de namoro</h3><p>O início de uma linda jornada.</p></div>
+<div class="moment"><h3>O grande pedido</h3><p>Decidimos viver nossa história para sempre.</p></div>
+</div>
+</section><section id="evento">
+<h2 class="title">Detalhes do Evento</h2>
+<div class="event-box">
+<p><strong>Data:</strong> 20 de Dezembro de 2026</p>
+<p><strong>Horário:</strong> 16:00</p>
+<p><strong>Local:</strong> Espaço Jardim Encantado</p>
+<p>Fortaleza - CE</p>
+<iframe src="https://www.google.com/maps?q=Fortaleza&output=embed" width="100%" height="280" style="border:0;border-radius:10px;margin-top:15px"></iframe>
+</div>
+</section><section id="galeria">
+<h2 class="title">Momentos</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992">
+<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
+<img src="https://images.unsplash.com/photo-1537907510278-a47e1c7d1a3e">
+<img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70">
+</div>
+</section><section id="rsvp">
+<h2 class="title">Confirme sua Presença</h2>
+<form>
+<input type="text" placeholder="Seu nome" required>
+<input type="number" placeholder="Número de convidados">
+<textarea placeholder="Mensagem para os noivos"></textarea>
+<button type="submit">Confirmar presença</button>
+</form>
+</section><section id="recados">
+<h2 class="title">Mensagens dos Convidados</h2>
+<form onsubmit="addMessage(event)">
+<input id="guestName" type="text" placeholder="Seu nome" required>
+<textarea id="guestMsg" placeholder="Deixe uma mensagem" required></textarea>
+<button type="submit">Enviar</button>
+</form>
+<div class="messages" id="messages"></div>
+</section><footer>
+<p>"O amor torna tudo eterno."</p>
+<p>Ana & João</p>
+</footer><div class="music" onclick="toggleMusic()">🎵 Música</div>
+<a class="whatsapp" href="https://wa.me/5500000000000">WhatsApp</a><audio id="bgMusic" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio><script>
+
+function scrollToRSVP(){
+document.getElementById('rsvp').scrollIntoView({behavior:'smooth'});
+}
+
+const weddingDate = new Date("Dec 20, 2026 16:00:00").getTime();
+
+setInterval(()=>{
+const now=new Date().getTime();
+const distance=weddingDate-now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+const el=document.getElementById("countdown");
+
+if(distance<0){
+el.innerHTML="Hoje é o grande dia!";
+return;
+}
+
+el.innerHTML=`${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+},1000);
+
+function toggleMusic(){
+const music=document.getElementById("bgMusic");
+if(music.paused){music.play()}else{music.pause()}
+}
+
+function addMessage(e){
+e.preventDefault();
+
+const name=document.getElementById("guestName").value;
+const msg=document.getElementById("guestMsg").value;
+
+const box=document.createElement("div");
+box.className="message";
+box.innerHTML=`<strong>${name}</strong><p>${msg}</p>`;
+
+document.getElementById("messages").prepend(box);
+
+e.target.reset();
+}
+
+function createPetal(){
+const petal=document.createElement("div");
+petal.className="petal";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),8000);
+}
+
+setInterval(createPetal,500);
+
+</script></body>
+</html>
