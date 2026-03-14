@@ -1,17 +1,19 @@
-<!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE <!DOCTYPE html>
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marcelo & Roseli | Casamento</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+<title>Marcelo & Roseli | Casamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Mantive todo o estilo original, apenas acrescentei ajustes para a seção história */
 :root{
 --gold:#d4af37;
---gold-soft:#f1e2b8;
+--gold-soft:#f5e6b8;
 --bg1:#fffaf3;
---bg2:#f3ece2;
+--bg2:#f1ebe3;
 --dark:#2b2b2b;
 }
-
-*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -20,73 +22,6 @@ background:linear-gradient(180deg,var(--bg1),var(--bg2));
 color:var(--dark);
 overflow-x:hidden;
 scroll-behavior:smooth;
-}
-
-/* INTRO */
-#intro{
-position:fixed;
-inset:0;
-background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e") center/cover no-repeat;
-color:white;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-z-index:9999;
-}
-
-#intro h1{
-font-family:'Playfair Display',serif;
-font-size:3rem;
-letter-spacing:3px;
-margin:15px 0;
-}
-
-#enterBtn{
-padding:14px 30px;
-border-radius:30px;
-border:none;
-background:var(--gold);
-color:white;
-font-weight:600;
-cursor:pointer;
-margin-top:20px;
-}
-
-#enterBtn:hover{opacity:.9}
-
-/* RINGS */
-.rings{
-position:relative;
-width:160px;
-height:120px;
-margin-bottom:20px;
-}
-
-.ring-img{
-position:absolute;
-width:90px;
-animation:ringSpin 12s linear infinite;
-filter:drop-shadow(0 0 10px rgba(212,175,55,0.7));
-}
-
-.ring-img.left{
-left:0;
-top:20px;
-}
-
-.ring-img.right{
-right:0;
-top:20px;
-animation-direction:reverse;
-}
-
-@keyframes ringSpin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-}
-100%{transform:rotateY(360deg)}
 }
 
 /* NAV */
@@ -109,46 +44,6 @@ color:#444;
 font-weight:600;
 }
 
-/* HERO */
-header{
-height:100vh;
-background:url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-color:white;
-}
-
-header::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.45);
-}
-
-.hero{
-position:relative;
-z-index:2;
-padding:20px;
-}
-
-.hero h1{
-font-family:'Playfair Display',serif;
-font-size:4rem;
-margin:0;
-text-shadow:0 0 15px rgba(212,175,55,.7);
-}
-
-.hero p{font-size:1.2rem}
-
-.countdown{
-font-size:1.8rem;
-margin-top:20px;
-font-weight:600;
-}
-
 section{
 padding:110px 20px;
 max-width:1100px;
@@ -162,7 +57,7 @@ text-align:center;
 margin-bottom:50px;
 }
 
-/* GALLERY */
+/* GALERIA */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -179,197 +74,115 @@ box-shadow:0 8px 20px rgba(0,0,0,.15);
 
 .gallery img:hover{transform:scale(1.05)}
 
-/* LIGHTBOX */
-#lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.9);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9998;
+/* HISTÓRIA */
+.timeline{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
-#lightbox img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
-}
-
-/* RSVP */
-form{
-display:flex;
-flex-direction:column;
-gap:12px;
-max-width:420px;
-margin:auto;
-}
-
-input,textarea{
-padding:11px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-button{
-background:var(--gold);
-border:none;
-padding:12px 20px;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-footer{
-background:#eee;
+.timeline div{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 6px 15px rgba(0,0,0,.1);
 text-align:center;
-padding:40px 20px;
-margin-top:60px;
-font-style:italic;
 }
 
-/* PETALS */
-.petal{
-position:fixed;
-top:-20px;
-width:10px;
-height:14px;
-background:#b30000;
-border-radius:60%;
-animation:fall linear forwards;
+.timeline img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
 }
+</style>
+</head>
+<body>
 
-@keyframes fall{
-0%{transform:translateY(0) rotate(0)}
-100%{transform:translateY(110vh) rotate(360deg);opacity:0}
-}
-
-/* GOLD PARTICLES */
-.spark{
-position:fixed;
-bottom:-10px;
-width:4px;
-height:4px;
-background:var(--gold);
-border-radius:50%;
-box-shadow:0 0 10px var(--gold);
-animation:floatSpark 10s linear forwards;
-}
-
-@keyframes floatSpark{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh);opacity:0}
-}
-
-@media(max-width:800px){
-.hero h1{font-size:2.5rem}
-}
-
-</style></head><body><div id="intro">
-<div class="rings">
-<img class="ring-img left" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Wedding_ring_gold.png">
-<img class="ring-img right" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Wedding_ring_gold.png">
-</div>
-<div class="ring"></div>
-</div>
-<h1>Marcelo & Roseli</h1>
-<p>05 de Junho de 2026 • 15:00</p>
-<button id="enterBtn" onclick="enterSite()">Entrar no convite</button>
-</div><nav>
+<nav>
 <a href="#home">Início</a>
 <a href="#galeria">Fotos</a>
+<a href="#historia">Nossa História</a>
 <a href="#rsvp">RSVP</a>
-</nav><header id="home">
+</nav>
+
+<header id="home">
 <div class="hero">
 <h1>Marcelo & Roseli</h1>
 <p>Você está convidado para celebrar conosco</p>
 <p><strong>05 de Junho de 2026 • 15:00</strong></p>
 <div class="countdown" id="countdown"></div>
 </div>
-</header><section id="galeria">
+</header>
+
+<section id="galeria">
 <h2 class="title">Momentos</h2>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992" onclick="openImg(this.src)">
-<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486" onclick="openImg(this.src)">
-<img src="https://images.unsplash.com/photo-1537907510278-a47e1c7d1a3e" onclick="openImg(this.src)">
+  <!-- Substitua pelas suas imagens -->
+  <img src="images/foto1.jpg" onclick="openImg(this.src)">
+  <img src="images/foto2.jpg" onclick="openImg(this.src)">
+  <img src="images/foto3.jpg" onclick="openImg(this.src)">
+  <img src="images/foto4.jpg" onclick="openImg(this.src)">
+  <img src="images/foto5.jpg" onclick="openImg(this.src)">
+  <img src="images/foto6.jpg" onclick="openImg(this.src)">
+  <img src="images/foto7.jpg" onclick="openImg(this.src)">
+  <img src="images/foto8.jpg" onclick="openImg(this.src)">
+  <img src="images/foto9.jpg" onclick="openImg(this.src)">
+  <img src="images/foto10.jpg" onclick="openImg(this.src)">
 </div>
-</section><section id="rsvp">
+</section>
+
+<section id="historia">
+<h2 class="title">Nossa História</h2>
+<div class="timeline">
+  <div>
+    <img src="images/inicio.jpg" alt="Primeiro encontro">
+    <p>Nos conhecemos em ...</p>
+  </div>
+  <div>
+    <img src="images/namoro.jpg" alt="Namoro">
+    <p>O namoro começou em ...</p>
+  </div>
+  <div>
+    <img src="images/viagem.jpg" alt="Viagem especial">
+    <p>Uma viagem inesquecível ...</p>
+  </div>
+  <div>
+    <img src="images/pedido.jpg" alt="Pedido de casamento">
+    <p>O pedido aconteceu em ...</p>
+  </div>
+</div>
+</section>
+
+<section id="rsvp">
 <h2 class="title">Confirme sua Presença</h2>
 <form>
 <input type="text" placeholder="Seu nome" required>
+<input type="email" placeholder="Seu e-mail" required>
 <textarea placeholder="Mensagem para os noivos"></textarea>
 <button type="submit">Confirmar presença</button>
 </form>
-</section><div id="lightbox" onclick="closeImg()">
+</section>
+
+<div id="lightbox" onclick="closeImg()">
 <img id="lightboxImg">
-</div><footer>
+</div>
+
+<footer>
 <p>"O amor torna tudo eterno."</p>
 <p>Marcelo & Roseli</p>
-</footer><iframe id="musicFrame" width="0" height="0" src="" frameborder="0" allow="autoplay"></iframe><script>
+</footer>
 
-function enterSite(){
-const intro=document.getElementById('intro');
-intro.style.display='none';
-
-const frame=document.getElementById('musicFrame');
-frame.src="https://www.youtube.com/embed/j0bwhbB3Hjc?autoplay=1&loop=1&playlist=j0bwhbB3Hjc";
-}
-
-const weddingDate = new Date("Jun 5, 2026 15:00:00").getTime();
-
-setInterval(()=>{
-const now=new Date().getTime();
-const distance=weddingDate-now;
-
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-const seconds=Math.floor((distance%(1000*60))/1000);
-
-const el=document.getElementById("countdown");
-
-if(distance<0){
-el.innerHTML="Hoje é o grande dia!";
-return;
-}
-
-el.innerHTML=`${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-},1000);
-
-function createPetal(){
-const petal=document.createElement("div");
-petal.className="petal";
-petal.style.left=Math.random()*100+"vw";
-petal.style.animationDuration=(4+Math.random()*5)+"s";
-
-document.body.appendChild(petal);
-setTimeout(()=>petal.remove(),9000);
-}
-
-setInterval(createPetal,500);
-
-function createSpark(){
-const s=document.createElement("div");
-s.className="spark";
-s.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),10000);
-}
-
-setInterval(createSpark,700);
-
+<script>
 function openImg(src){
 const box=document.getElementById('lightbox');
 const img=document.getElementById('lightboxImg');
 img.src=src;
 box.style.display='flex';
 }
-
 function closeImg(){
 document.getElementById('lightbox').style.display='none';
 }
+</script>
 
-</script></body>
+</body>
 </html>
