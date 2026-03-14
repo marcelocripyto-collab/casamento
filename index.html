@@ -5,7 +5,7 @@
 <title>Casamento Marcelo & Roseli</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
 :root{
---gold:#c8a97e;
+--gold:#d4af37;
 --dark:#2b2b2b;
 --soft:#faf7f5;
 }
@@ -21,7 +21,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* OPENING SCREEN */
+/* INTRO SCREEN */
 #intro{
 position:fixed;
 inset:0;
@@ -53,7 +53,7 @@ cursor:pointer;
 font-weight:600;
 }
 
-/* RINGS ANIMATION */
+/* RINGS */
 .rings{
 position:relative;
 width:120px;
@@ -65,18 +65,35 @@ margin-bottom:30px;
 position:absolute;
 width:80px;
 height:80px;
-border:6px solid gold;
+border:6px solid var(--gold);
 border-radius:50%;
 animation:spin 6s linear infinite;
 }
 
 .ring:nth-child(2){
 left:30px;
+animation-direction:reverse;
 }
 
 @keyframes spin{
 from{transform:rotate(0deg)}
 to{transform:rotate(360deg)}
+}
+
+/* PARTICLES */
+.spark{
+position:fixed;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+opacity:.8;
+animation:float 8s linear forwards;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);opacity:1}
+to{transform:translateY(-10vh);opacity:0}
 }
 
 nav{
@@ -131,9 +148,7 @@ letter-spacing:3px;
 margin:0;
 }
 
-.hero p{
-font-size:1.2rem;
-}
+.hero p{font-size:1.2rem}
 
 .countdown{
 font-size:1.7rem;
@@ -154,32 +169,6 @@ text-align:center;
 margin-bottom:60px;
 }
 
-/* TIMELINE */
-.timeline{
-position:relative;
-max-width:750px;
-margin:auto;
-}
-
-.timeline::after{
-content:'';
-position:absolute;
-width:3px;
-background:var(--gold);
-top:0;
-bottom:0;
-left:50%;
-}
-
-.moment{
-padding:20px 30px;
-position:relative;
-width:50%;
-}
-
-.moment:nth-child(odd){left:0;text-align:right}
-.moment:nth-child(even){left:50%}
-
 /* GALLERY */
 .gallery{
 display:grid;
@@ -190,10 +179,28 @@ gap:18px;
 .gallery img{
 width:100%;
 border-radius:12px;
+cursor:pointer;
 transition:0.4s;
 }
 
 .gallery img:hover{transform:scale(1.08)}
+
+/* LIGHTBOX */
+#lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9998;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
 
 /* RSVP */
 form{
@@ -227,14 +234,14 @@ margin-top:60px;
 font-style:italic;
 }
 
-/* RED ROSE PETALS */
+/* PETALS */
 .petal{
 position:fixed;
 top:-20px;
 width:10px;
 height:14px;
 background:#b30000;
-border-radius:60% 60% 60% 60%;
+border-radius:60%;
 animation:fall linear forwards;
 }
 
@@ -256,7 +263,6 @@ to{transform:translateY(110vh) rotate(360deg);opacity:0}
 <button id="enterBtn" onclick="enterSite()">Entrar no convite</button>
 </div><nav>
 <a href="#home">Início</a>
-<a href="#historia">História</a>
 <a href="#galeria">Fotos</a>
 <a href="#rsvp">RSVP</a>
 </nav><header id="home">
@@ -266,19 +272,12 @@ to{transform:translateY(110vh) rotate(360deg);opacity:0}
 <p><strong>05 de Junho de 2026 • 15:00</strong></p>
 <div class="countdown" id="countdown"></div>
 </div>
-</header><section id="historia">
-<h2 class="title">Nossa História</h2>
-<div class="timeline">
-<div class="moment"><h3>Primeiro encontro</h3><p>Um encontro que mudou tudo.</p></div>
-<div class="moment"><h3>Primeira viagem</h3><p>Descobrimos o mundo juntos.</p></div>
-<div class="moment"><h3>Pedido de casamento</h3><p>O início do nosso para sempre.</p></div>
-</div>
-</section><section id="galeria">
+</header><section id="galeria">
 <h2 class="title">Momentos</h2>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992">
-<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
-<img src="https://images.unsplash.com/photo-1537907510278-a47e1c7d1a3e">
+<img src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992" onclick="openImg(this.src)">
+<img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486" onclick="openImg(this.src)">
+<img src="https://images.unsplash.com/photo-1537907510278-a47e1c7d1a3e" onclick="openImg(this.src)">
 </div>
 </section><section id="rsvp">
 <h2 class="title">Confirme sua Presença</h2>
@@ -287,13 +286,19 @@ to{transform:translateY(110vh) rotate(360deg);opacity:0}
 <textarea placeholder="Mensagem para os noivos"></textarea>
 <button type="submit">Confirmar presença</button>
 </form>
-</section><footer>
+</section><div id="lightbox" onclick="closeImg()">
+<img id="lightboxImg">
+</div><footer>
 <p>"O amor torna tudo eterno."</p>
 <p>Marcelo & Roseli</p>
-</footer><iframe width="0" height="0" src="https://www.youtube.com/embed/j0bwhbB3Hjc?autoplay=1&loop=1&playlist=j0bwhbB3Hjc" frameborder="0" allow="autoplay"></iframe><script>
+</footer><iframe id="musicFrame" width="0" height="0" src="" frameborder="0" allow="autoplay"></iframe><script>
 
 function enterSite(){
-document.getElementById('intro').style.display='none'
+const intro=document.getElementById('intro');
+intro.style.display='none';
+
+const frame=document.getElementById('musicFrame');
+frame.src="https://www.youtube.com/embed/j0bwhbB3Hjc?autoplay=1&loop=1&playlist=j0bwhbB3Hjc";
 }
 
 const weddingDate = new Date("Jun 5, 2026 15:00:00").getTime();
@@ -330,6 +335,29 @@ setTimeout(()=>petal.remove(),8000);
 }
 
 setInterval(createPetal,400);
+
+function createSpark(){
+const s=document.createElement("div");
+s.className="spark";
+s.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(s);
+
+setTimeout(()=>s.remove(),8000);
+}
+
+setInterval(createSpark,500);
+
+function openImg(src){
+const box=document.getElementById('lightbox');
+const img=document.getElementById('lightboxImg');
+img.src=src;
+box.style.display='flex';
+}
+
+function closeImg(){
+document.getElementById('lightbox').style.display='none';
+}
 
 </script></body>
 </html>
