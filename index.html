@@ -1,13 +1,13 @@
 <!DOCTYPE html><html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casamento Marcelo & Roseli</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
 :root{
 --gold:#d4af37;
---dark:#2b2b2b;
 --soft:#faf7f5;
+--dark:#2b2b2b;
 }
 
 *{box-sizing:border-box}
@@ -21,7 +21,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 #intro{
 position:fixed;
 inset:0;
@@ -38,27 +38,27 @@ text-align:center;
 #intro h1{
 font-family:'Playfair Display',serif;
 font-size:3rem;
+margin:10px 0;
 letter-spacing:3px;
-margin-bottom:10px;
 }
 
 #enterBtn{
 margin-top:25px;
-padding:14px 28px;
+padding:14px 30px;
 background:var(--gold);
 border:none;
-color:white;
 border-radius:30px;
-cursor:pointer;
+color:white;
 font-weight:600;
+cursor:pointer;
 }
 
-/* RINGS */
+/* RINGS ANIMATION */
 .rings{
 position:relative;
 width:120px;
 height:120px;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
 .ring{
@@ -67,35 +67,22 @@ width:80px;
 height:80px;
 border:6px solid var(--gold);
 border-radius:50%;
-animation:spin 6s linear infinite;
+top:20px;
+left:10px;
+animation:spin 5s linear infinite;
 }
 
 .ring:nth-child(2){
-left:30px;
+left:40px;
 animation-direction:reverse;
 }
 
 @keyframes spin{
-from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
 }
 
-/* PARTICLES */
-.spark{
-position:fixed;
-width:4px;
-height:4px;
-background:white;
-border-radius:50%;
-opacity:.8;
-animation:float 8s linear forwards;
-}
-
-@keyframes float{
-from{transform:translateY(100vh);opacity:1}
-to{transform:translateY(-10vh);opacity:0}
-}
-
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -103,10 +90,9 @@ width:100%;
 background:white;
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
 gap:20px;
 padding:12px;
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
 z-index:100;
 }
 
@@ -114,9 +100,9 @@ nav a{
 text-decoration:none;
 color:#444;
 font-weight:600;
-font-size:14px;
 }
 
+/* HERO */
 header{
 height:100vh;
 background:url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover no-repeat;
@@ -144,14 +130,11 @@ padding:20px;
 .hero h1{
 font-family:'Playfair Display',serif;
 font-size:4rem;
-letter-spacing:3px;
 margin:0;
 }
 
-.hero p{font-size:1.2rem}
-
 .countdown{
-font-size:1.7rem;
+font-size:1.6rem;
 margin-top:20px;
 font-weight:600;
 }
@@ -164,9 +147,9 @@ margin:auto;
 
 .title{
 font-family:'Playfair Display',serif;
-font-size:2.6rem;
+font-size:2.4rem;
 text-align:center;
-margin-bottom:60px;
+margin-bottom:50px;
 }
 
 /* GALLERY */
@@ -180,10 +163,10 @@ gap:18px;
 width:100%;
 border-radius:12px;
 cursor:pointer;
-transition:0.4s;
+transition:.4s;
 }
 
-.gallery img:hover{transform:scale(1.08)}
+.gallery img:hover{transform:scale(1.05)}
 
 /* LIGHTBOX */
 #lightbox{
@@ -246,7 +229,23 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);opacity:0}
+0%{transform:translateY(0) rotate(0)}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* LIGHT PARTICLES */
+.spark{
+position:fixed;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:float 8s linear forwards;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh);opacity:0}
 }
 
 @media(max-width:800px){
@@ -330,7 +329,6 @@ petal.style.left=Math.random()*100+"vw";
 petal.style.animationDuration=(3+Math.random()*5)+"s";
 
 document.body.appendChild(petal);
-
 setTimeout(()=>petal.remove(),8000);
 }
 
@@ -342,7 +340,6 @@ s.className="spark";
 s.style.left=Math.random()*100+"vw";
 
 document.body.appendChild(s);
-
 setTimeout(()=>s.remove(),8000);
 }
 
